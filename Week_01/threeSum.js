@@ -6,7 +6,6 @@ var threeSum = function (nums) {
   // 1,排序
   // 2，验证2数和，动态规划
   nums.sort((a, b) => a - b);
-  console.log('sort----', nums);
   let arr = [];
   for (let k = 0; k < nums.length - 2; k++) {
     if (nums[k] > 0) {
