@@ -1,8 +1,8 @@
 // 暴力求解
 {
   let nums = [-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4];
-  let threeSum = function (nums) {
-    if (nums.length < 3) return false;
+  var threeSum = function (nums) {
+    if (nums.length < 3) return [];
     nums.sort((a, b) => a - b);
     let res = [];
     for (let i = 0; i < nums.length - 2; i++) {
