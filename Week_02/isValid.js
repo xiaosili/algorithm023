@@ -3,6 +3,8 @@
   let s = '{[]}';
 
   var isValid = function (s) {
+    if (!s.length) return false;
+    if (s.length % 2) return false;
     let stack = [];
     for (let c of s) {
       if (c == '(') stack.push(')');
@@ -19,6 +21,8 @@
 {
   let s = '{[]}';
   var isValid = function (s) {
+    if (!s.length) return false;
+    if (s.length % 2) return false;
     // 遍历字符串，如果是左括号，入栈，如果是对应的右括号，出栈
     let dic = { ')': '(', ']': '[', '}': '{' };
     let stack = [];
