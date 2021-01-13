@@ -23,6 +23,25 @@
  * @param {number} target
  * @return {number[]}
  */
+
+// 用map
+var twoSum = function (nums, target) {
+  const map = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    const another = target - nums[i];
+
+    if (map.get(another) !== undefined) {
+      return [map.get(another), i];
+    }
+
+    map.set(nums[i], i);
+  }
+
+  return null;
+};
+
+// 用object属性
 var twoSum = function (nums, target) {
   const map = {};
 
