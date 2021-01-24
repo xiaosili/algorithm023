@@ -44,33 +44,41 @@ var myPow = function (x, n) {
   return res;
 };
 
-// 方法三，分治
+// 方法三，分治优化1 best ?
 var myPow = function (x, n) {
-  var func = (x, n) => {
-    if (n === 1) return x;
-    let res = func(x, Math.floor(n / 2));
-    return n % 2 ? res * res * x : res * res;
-  };
-
-  if (n === 0 || x === 1) return 1;
-  if (n === 1) return x;
-  // if (n < 0) {
-  //   x = 1 / x;
-  //   n = -n;
-  // }
-  if (n < 0) return 1 / func(x, -n);
-  return func(x, n);
-};
-
-// 方法三，分治优化
-var myPow = function (x, n) {
-  if (n === 0 || x === 1) return 1;
-  if (n === 1) return x;
   if (n < 0) {
     x = 1 / x;
     n = -n;
   }
+  if (n === 0 || x === 1) return 1;
+  if (n === 1) return x;
   let res = myPow(x, Math.floor(n / 2));
+  return n % 2 ? res * res * x : res * res;
+};
+
+// 方法三，分治优化2
+var myPow = function (x, n) {
+  if (n < 0) {
+    x = 1 / x;
+    n = -n;
+  }
+  if (n === 0 || x === 1) return 1;
+  if (n === 1) return x;
+  let res = myPow(x * x, Math.floor(n / 2));
+  return n % 2 ? res * x : res;
+};
+
+// 方法三，分治
+var myPow = function (x, n) {
+  if (n === 0 || x === 1) return 1;
+  if (n === 1) return x;
+  let res;
+  if (n < 0) {
+    // res = 1 / myPow(x, -Math.floor(n / 2));
+    res = 1 / myPow(x, Math.ceil(-n / 2));
+  } else {
+    res = myPow(x, Math.floor(n / 2));
+  }
   return n % 2 ? res * res * x : res * res;
 };
 
@@ -82,7 +90,5 @@ var myPow = function (x, n) {
     x = 1 / x;
     n = -n;
   }
-  return n % 2 == 0
-    ? myPow(x * x, Math.floor(n / 2))
-    : x * myPow(x * x, Math.floor(n / 2));
+  return n % 2 == 0 ? myPow(x * x, n / 2) : x * myPow(x * x, Math.floor(n / 2));
 };
