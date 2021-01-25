@@ -49,15 +49,15 @@ var subsets = function (nums) {
   const tmp = [];
   const res = [];
   const len = nums.length;
-  const dfs = (cur) => {
-    if (cur === len) {
+  const dfs = (index) => {
+    if (index === len) {
       res.push(tmp.slice());
       return;
     }
-    tmp.push(nums[cur]);
-    dfs(cur + 1);
+    dfs(index + 1);
+    tmp.push(nums[index]);
+    dfs(index + 1);
     tmp.pop();
-    dfs(cur + 1);
   };
   dfs(0);
   return res;
