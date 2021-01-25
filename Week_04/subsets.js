@@ -2,6 +2,19 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+// 迭代
+var subsets = function (nums) {
+  let results = [[]];
+  for (let num of nums) {
+    let newsets = [...results];
+    for (let result of results) {
+      newsets.push(result.concat([num]));
+    }
+    results = newsets;
+  }
+  return results;
+};
+
 // 老师讲的思路，和生成括号类似
 var subsets = function (nums) {
   let res = [];
