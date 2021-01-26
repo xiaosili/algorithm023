@@ -31,7 +31,7 @@ var isValidBST = function (root) {
     inorder(root.right);
   };
   inorder(root);
-  return flag ? true : false;
+  return flag;
 };
 
 // 迭代
