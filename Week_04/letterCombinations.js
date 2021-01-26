@@ -3,6 +3,7 @@
  * @return {string[]}
  */
 var letterCombinations = function (digits) {
+  if (!digits) return [];
   let arr = ["2", "3", "4", "5", "6", "7", "8", "9"];
   let brr = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
   let map = new Map();
@@ -10,7 +11,6 @@ var letterCombinations = function (digits) {
     map.set(arr[i], brr[i]);
   }
   let len = digits.length;
-  if (!len) return [];
   let res = [];
   let search = (s, i) => {
     if (i === len) {
