@@ -22,12 +22,20 @@ var threeSum = function (nums) {
       let sum = nums[k] + nums[i] + nums[j];
       if (sum < 0) {
         while (i < j && nums[i] === nums[++i]);
+        // while (i < j && nums[i] === nums[i + 1]) i++;
+        // i++;
       } else if (sum > 0) {
         while (i < j && nums[j] === nums[--j]);
+        // while (i < j && nums[j] === nums[j - 1]) j--;
+        // j--;
       } else {
         arr.push([nums[k], nums[i], nums[j]]);
         while (i < j && nums[i] === nums[++i]);
+        // while (i < j && nums[i] === nums[i + 1]) i++;
+        // i++;
         while (i < j && nums[j] === nums[--j]);
+        // while (i < j && nums[j] === nums[j - 1]) j--;
+        // j--;
       }
     }
   }
