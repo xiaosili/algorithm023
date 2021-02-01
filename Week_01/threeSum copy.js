@@ -29,8 +29,7 @@
     let len = nums.length;
     if (len < 3) return [];
     nums.sort((a, b) => a - b);
-    if (nums[0] > 0) return [];
-    if (nums[len - 1] < 0) return [];
+    if (nums[0] > 0 || nums[len - 1] < 0) return [];
     let map = new Map();
     for (i = 0; i < len; i++) {
       for (let j = i + 1; j < len - 2; j++) {
