@@ -66,8 +66,13 @@ var threeSum = function (nums) {
         while (L < R && nums[R] == nums[R - 1]) R--; // 去重
         L++;
         R--;
-      } else if (sum < 0) L++;
-      else if (sum > 0) R--;
+      } else if (sum < 0) {
+        while (L < R && nums[L] == nums[L + 1]) L++; // 去重
+        L++;
+      } else if (sum > 0) {
+        while (L < R && nums[R] == nums[R - 1]) R--; // 去重
+        R--;
+      }
     }
   }
   return ans;
