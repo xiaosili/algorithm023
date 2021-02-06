@@ -3,6 +3,7 @@
  * @param {number} target
  * @return {number[][]}
  */
+// 参考三数之和
 var fourSum = function (nums, target) {
   let len = nums.length;
   if (len < 4) return [];
@@ -33,4 +34,34 @@ var fourSum = function (nums, target) {
     }
   }
   return res;
+};
+
+// 暴力法，居然没超时
+var fourSum = function (nums, target) {
+  let len = nums.length;
+  if (len < 4) return [];
+  if (len === 4) {
+    if (nums[0] + nums[1] + nums[2] + nums[3] === target) return [nums];
+    return [];
+  }
+
+  nums.sort((a, b) => a - b);
+  let map = new Map();
+  for (let i = 0; i < len - 3; i++) {
+    for (let j = i + 1; j < len - 2; j++) {
+      for (let z = j + 1; z < len - 1; z++) {
+        for (k = z + 1; k < len; k++) {
+          if (nums[i] + nums[j] + nums[z] + nums[k] === target) {
+            let key = [nums[i], nums[j], nums[z], nums[k]]
+              .sort((a, b) => a - b)
+              .toString();
+            if (!map.has(key)) {
+              map.set(key, [nums[i], nums[j], nums[z], nums[k]]);
+            }
+          }
+        }
+      }
+    }
+  }
+  return Array.from(map.values());
 };
