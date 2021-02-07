@@ -3,7 +3,20 @@
  * @return {boolean}
  */
 // 贪心
-// 方法二，倒序，best
+// 方法一，顺序
+var canJump = function (nums) {
+  let n = nums.length;
+  let rightmost = 0;
+  for (let i = 0; i < n; i++) {
+    if (i <= rightmost) {
+      rightmost = Math.max(rightmost, i + nums[i]);
+      if (rightmost >= n - 1) return true;
+    }
+  }
+  return false;
+};
+
+// 方法二，倒序
 var canJump = function (nums) {
   let len = nums.length;
   if (len === 1) return true;
@@ -17,19 +30,4 @@ var canJump = function (nums) {
   }
   //如果last等于0，说明可以从第一个位置跳到最后
   return last === 0;
-};
-
-// 方法一，顺序
-var canJump = function (nums) {
-  let n = nums.length;
-  let rightmost = 0;
-  for (let i = 0; i < n; i++) {
-    if (i <= rightmost) {
-      rightmost = Math.max(rightmost, i + nums[i]);
-      if (rightmost >= n - 1) {
-        return true;
-      }
-    }
-  }
-  return false;
 };
