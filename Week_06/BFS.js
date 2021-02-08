@@ -1,7 +1,7 @@
 const bfs = (root) => {
   let result = [],
     queue = [root];
-  while (queue.length > 0) {
+  while (queue.length) {
     let level = [],
       n = queue.length;
     for (let i = 0; i < n; i++) {
