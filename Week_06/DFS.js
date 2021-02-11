@@ -1,3 +1,4 @@
+// 二叉树模版
 const visited = new Set();
 const dfs = (node) => {
   if (visited.has(node)) return;
@@ -6,6 +7,7 @@ const dfs = (node) => {
   dfs(node.right);
 };
 
+// 多叉树模版
 const visited = new Set();
 const dfs = (node, visited) => {
   if (visited.has(node)) return;
