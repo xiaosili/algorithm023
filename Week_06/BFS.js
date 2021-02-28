@@ -6,11 +6,13 @@ const bfs = (root) => {
       n = queue.length;
     for (let i = 0; i < n; i++) {
       let node = queue.pop();
-      level.push(node.val);
-      if (node.left) queue.unshift(node.left);
-      if (node.right) queue.unshift(node.right);
+      if (node) {
+        level.push(node.val);
+        if (node.left) queue.unshift(node.left);
+        if (node.right) queue.unshift(node.right);
+      }
     }
-    result.push(level);
+    if (level.length) result.push(level);
   }
   return result;
 };
